@@ -5,6 +5,9 @@ description = "LocoJSON is a lightweight Python library for multi-language suppo
 authors = ["drago-suzuki58 <dorasuzu58@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/drago-suzuki58/LocoJSON"
+keywords = ["json", "localization", "translation", "localisation", "multi-language"]
+exclude = ["tests/*", "docs/*", "examples/*"]
 
 [tool.poetry.dependencies]
 python = "^3.11"

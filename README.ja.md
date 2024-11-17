@@ -124,6 +124,8 @@ print(loc.greeting.hello(message="hogehoge"))
 }
 ```
 
+以上のサンプルコード以外にも、実用的なサンプルを[example](https://github.com/drago-suzuki58/LocoJSON/tree/main/examples)フォルダに作りました。ぜひご覧ください。
+
 ## Q&A
 
 ### 翻訳言語の言語コードは何を使えばいい？

@@ -123,6 +123,8 @@ Translation Files Used in `main.py`
 }
 ```
 
+In addition to the above sample code, practical examples are available in the [example](https://github.com/drago-suzuki58/LocoJSON/tree/main/examples) folder. Please take a look.
+
 ## Q&A
 
 ### What language codes should I use for translations?

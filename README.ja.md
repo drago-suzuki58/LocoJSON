@@ -3,6 +3,8 @@
 LocoJSONは、Pythonで最も軽量なPythonプログラムの多言語対応のための全く新しいライブラリです。
 標準ライブラリのみを使用し、外部依存は全くありません。
 
+ただしLocoJSONは、[LocoCore](https://github.com/drago-suzuki58/LocoCore)というコアライブラリに依存しています。LocoCoreは、共通の多言語対応機能を提供し、LocoJSONはその上にJSON形式の翻訳機能を追加します。
+
 English README
 [English](README.md)
 
@@ -154,5 +156,9 @@ LocoJSONはオープンソースプロジェクトです！バグ報告や機能
 ### v0.1.0
 
 - 初回リリース
+
+### v0.2.0
+
+- コアコードを分離し、柔軟性を向上
 
 </details>

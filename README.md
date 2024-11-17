@@ -2,6 +2,8 @@
 
 LocoJSON is a brand new library for multilingual support in Python programs, designed to be the lightest possible. It uses only the standard library and has no external dependencies.
 
+However, LocoJSON depends on a core library called [LocoCore](https://github.com/drago-suzuki58/LocoCore). LocoCore provides common multilingual support features, and LocoJSON adds JSON-based translation functionality on top of it.
+
 Other Language LEADME (GitHub)
 [Japanese](https://github.com/drago-suzuki58/LocoJSON/blob/main/README.ja.md)
 
@@ -151,5 +153,9 @@ LocoJSON is an open-source project! Bug reports and feature suggestions are welc
 ### v0.1.0
 
 - Initial release
+
+### v0.2.0
+
+- Separating the core code for greater flexibility
 
 </details>

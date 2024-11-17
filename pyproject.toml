@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "locojson"
-version = "0.1.0"
+version = "0.2.0"
 description = "LocoJSON is a lightweight Python library for multi-language support, using hierarchical JSON-based translations with fallback and detailed logging for missing keys."
 authors = ["drago-suzuki58 <dorasuzu58@gmail.com>"]
 license = "MIT"
@@ -11,6 +11,7 @@ exclude = ["tests/*", "docs/*", "examples/*"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+lococore = "^0.2.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.13.0"

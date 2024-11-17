@@ -143,6 +143,7 @@ print(loc.greeting.hello(message="hogehoge"))
 ### JSONファイル以外のフォーマット（例: YAML）は使えますか？
 
 いいえ、現在のところJSONのみの対応になっています。需要が高いようであればLocoYAMLのような別ライブラリを開発するかもしれません。
+TOMLに関しては[LocoTOML](https://github.com/drago-suzuki58/LocoTOML)で現在使用可能です。
 
 ## 貢献
 

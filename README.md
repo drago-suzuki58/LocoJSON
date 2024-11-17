@@ -144,6 +144,7 @@ No, currently only JSON is supported. If there is high demand, we may develop a 
 ## Contribution
 
 LocoJSON is an open-source project! Bug reports and feature suggestions are welcome.
+TOML is currently available at [LocoTOML](https://github.com/drago-suzuki58/LocoTOML).
 
 ## Update Info
 

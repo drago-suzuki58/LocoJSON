@@ -27,6 +27,24 @@ class LocoJSON:
     def __getattr__(self, key: str) -> "_LocoDict":
         return _LocoDict(self, [key])
 
+    def change_locale(self, locale: str) -> None:
+        """ Change the locale and load the translations for the new locale """
+        self.locale = locale
+        self._load_translations(locale)
+
+    def change_fallback_locale(self, fallback_locale: str) -> None:
+        """ Change the fallback locale """
+        self.fallback_locale = fallback_locale
+        self._load_translations(fallback_locale)
+
+    def clear_cache(self) -> None:
+        """ Clear the cache """
+        self.cache = {}
+
+    def get_current_locale(self) -> str:
+        """ Get the current locale """
+        return self.locale
+
     def _load_translations(self, locale: str) -> None:
         if locale in self.cache:
             self.translations[locale] = self.cache[locale]

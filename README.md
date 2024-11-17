@@ -2,8 +2,8 @@
 
 LocoJSON is a brand new library for multilingual support in Python programs, designed to be the lightest possible. It uses only the standard library and has no external dependencies.
 
-Other Language LEADME
-[Japanese](README.ja.md)
+Other Language LEADME (GitHub)
+[Japanese](https://github.com/drago-suzuki58/LocoJSON/blob/main/README.ja.md)
 
 ## Features
 

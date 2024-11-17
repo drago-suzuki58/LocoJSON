@@ -15,6 +15,9 @@ python = "^3.11"
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.13.0"
 
+[tool.poetry.urls]
+"Issues" = "https://github.com/drago-suzuki58/LocoJSON/issues"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

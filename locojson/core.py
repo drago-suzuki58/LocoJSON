@@ -1,12 +1,12 @@
 import inspect
-import json
 import logging
 import os
 import string
+from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional
 
 
-class LocoJSON:
+class LocoCore(ABC):
     def __init__(self, locale: str, fallback_locale: str = "en", locale_dir: str = "loc", log_level: int = logging.WARNING):
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(log_level)
@@ -45,20 +45,44 @@ class LocoJSON:
         """ Get the current locale """
         return self.locale
 
+    @abstractmethod
     def _load_translations(self, locale: str) -> None:
-        if locale in self.cache:
-            self.translations[locale] = self.cache[locale]
-            return
+        """
+        Load the translations for the given locale.
 
-        locale_file = os.path.join(self.locale_dir, f"{locale}.json")
-        if os.path.exists(locale_file):
-            try:
-                with open(locale_file, "r", encoding="utf-8") as f:
-                    self.translations[locale] = json.load(f)
-                    self.cache[locale] = self.translations[locale]
-                self.logger.info(f"Loaded JSON file for locale {locale}")
-            except json.JSONDecodeError as e:
-                self.logger.error(f"Failed to load JSON file for locale {locale}: {e}")
+        This method should be implemented by subclasses to load translations
+        from a specific file format (e.g., JSON, TOML, YAML). The method should
+        read the translation file for the given locale, parse its contents, and
+        store the translations in the `self.translations` dictionary. If the
+        translations are already cached, the method should use the cached
+        translations instead of reading the file again.
+
+        Notes:
+            - The method should first check if the translations for the given locale
+              are already cached in `self.cache`. If they are, it should use the cached
+              translations.
+            - The translations should be stored in the `self.translations` dictionary,
+              which is of type `Dict[str, Dict[str, Any]]`.
+
+        Example:
+            class LocoJSON(LocoCore):
+                def _load_translations(self, locale: str) -> None:
+                    if locale in self.cache:
+                        self.translations[locale] = self.cache[locale]
+                        return
+
+                    locale_file = os.path.join(self.locale_dir, f"{locale}.json")
+                    if os.path.exists(locale_file):
+                        try:
+                            import json
+                            with open(locale_file, "r", encoding="utf-8") as f:
+                                self.translations[locale] = json.load(f)
+                                self.cache[locale] = self.translations[locale]
+                            self.logger.info(f"Loaded JSON file for locale {locale}")
+                        except json.JSONDecodeError as e:
+                            self.logger.error(f"Failed to load JSON file for locale {locale}: {e}")
+        """
+        pass
 
     def _get_translation(self, keys: List[str], locale: str, **kwargs) -> str:
         if locale not in self.translations:
@@ -95,8 +119,26 @@ class LocoJSON:
             return ".".join(keys)
 
 
+class LocoJSON(LocoCore):
+    def _load_translations(self, locale: str) -> None:
+        if locale in self.cache:
+            self.translations[locale] = self.cache[locale]
+            return
+
+        locale_file = os.path.join(self.locale_dir, f"{locale}.json")
+        if os.path.exists(locale_file):
+            try:
+                import json
+                with open(locale_file, "r", encoding="utf-8") as f:
+                    self.translations[locale] = json.load(f)
+                    self.cache[locale] = self.translations[locale]
+                self.logger.info(f"Loaded JSON file for locale {locale}")
+            except json.JSONDecodeError as e:
+                self.logger.error(f"Failed to load JSON file for locale {locale}: {e}")
+
+
 class _LocoDict:
-    def __init__(self, localization: LocoJSON, keys: List[str]):
+    def __init__(self, localization: LocoCore, keys: List[str]):
         self.localization = localization
         self.keys = keys
 

@@ -1,4 +1,5 @@
 import os
+import json
 from lococore import LocoCore
 
 
@@ -11,7 +12,6 @@ class LocoJSON(LocoCore):
         locale_file = os.path.join(self.locale_dir, f"{locale}.json")
         if os.path.exists(locale_file):
             try:
-                import json
                 with open(locale_file, "r", encoding="utf-8") as f:
                     self.translations[locale] = json.load(f)
                     self.cache[locale] = self.translations[locale]
